@@ -15,13 +15,15 @@ const myFunction = useCallback((x1)=> {
    setCount((count)=> count + 1)
   },[history])
   
+  
     return (
       <div>
         <Hello name={name} />
         <p>
           Start editing to see some magic happen :) 
         </p>
-        <div>{count}</div>
+        <div>count = {count}</div>
+        <div>path = {path}</div>
         <button onClick={()=>myFunction()}> +1</button>
         <button onClick={()=>myFunction("/1" + path , count, 33)}> push a path</button>
         <button onClick={()=>setPath((path)=> path +1)}> incrémenter path</button>
