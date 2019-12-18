@@ -1,6 +1,7 @@
 import React, { Component, useCallback, useState } from 'react';
 import { render } from 'react-dom';
-import { useHistory, BrowserRouter } from 'react-router-dom';
+import { useHistory, BrowserRouter, useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import Hello from './Hello';
 import './style.css';
 
@@ -9,6 +10,9 @@ const [name, setName] = useState("Hi guys, you want to understand the useCallbac
 const history = useHistory()
 const [count, setCount] = useState(0)
 const [path, setPath] = useState(0)
+const params = useParams()
+console.log({params})
+
 
 const myFunction = useCallback((x1)=> {
    history.push(x1)
@@ -25,7 +29,7 @@ const myFunction = useCallback((x1)=> {
         <div>count = {count}</div>
         <div>path = {path}</div>
         <button onClick={()=>myFunction()}> +1</button>
-        <button onClick={()=>myFunction("/1" + path , count, 33)}> push a path</button>
+        <button onClick={()=>myFunction("/:1" + path , count, 33)}> push a path</button>
         <button onClick={()=>setPath((path)=> path +1)}> incrémenter path</button>
       </div>
     );
